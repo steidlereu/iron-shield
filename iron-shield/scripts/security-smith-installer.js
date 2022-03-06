@@ -2,17 +2,17 @@ const chalk = require('chalk');
 const fs = require('fs');
 const { exec } = require('child_process');
 
-const readline = require('readline').createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 let securityConfig = {
   grype: false,
 };
 
-console.log(chalk.green('security smith installer'));
+console.log(chalk.green('Irone Shield installer'));
 console.log(chalk.yellow('Please choose your vulnerability scanners:'));
+
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 readline.question(`Install grype? (yes/no)`, answer => {
 
@@ -30,17 +30,12 @@ readline.question(`Install grype? (yes/no)`, answer => {
       console.log(`stdout: ${stdout}`);
     });
 
-    securityConfig.grype = false;
+    securityConfig.grype = true;
 
   }
 
   let data = JSON.stringify(securityConfig);
   fs.writeFileSync('config/custom/security.json', data);
-
-  readline.close();
-});
-
-readline.question(`Install clair? (yes/no)`, answer => {
 
   readline.close();
 });
