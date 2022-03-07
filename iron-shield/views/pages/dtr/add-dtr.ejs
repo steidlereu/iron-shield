@@ -1,7 +1,33 @@
 <div id="add-dtr" v-cloak>
-
-  <h1>TODO: Implement this page.</h1>
-  <p>(See also <em>assets/styles/pages/dtr/add-dtr.less</em>, <em>assets/js/pages/dtr/add-dtr.page.js</em>, and <em>api/controllers/dtr/view-add-dtr.js</em>.)</p>
-
+  <div class="container pt-5 pb-5">
+    <h1>Add registry</h1>
+    <hr/>
+    <ajax-form action="appendDtr" :syncing.sync="syncing" :cloud-error.sync="cloudError" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" @submitted="submittedForm()">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="url">Url</label>
+            <input class="form-control" id="url" name="url" type="text"  :class="[formErrors.url ? 'is-invalid' : '']" v-model.trim="formData.url" placeholder="hub.docker.com" focus-first>
+            <div class="invalid-feedback" v-if="formErrors.url">Please enter your dtr url.</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="token">Access Token</label>
+            <input class="form-control" id="token" name="token" type="text"  :class="[formErrors.token ? 'is-invalid' : '']" v-model.trim="formData.token" placeholder="some token">
+            <div class="invalid-feedback" v-if="formErrors.token">Please enter your dtr access token.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group text-right">
+            <a class="btn btn-outline-info" href="/dtr">Cancel</a>
+            <ajax-button type="submit" :syncing="syncing" class="btn btn-dark">Save</ajax-button>
+          </div>
+        </div>
+      </div>
+    </ajax-form>
+  </div>
 </div>
-<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
