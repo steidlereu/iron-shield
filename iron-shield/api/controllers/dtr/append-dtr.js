@@ -22,9 +22,12 @@ module.exports = {
   exits: {
 
   },
+  
 
+  fn: async function ({url, token}) {
 
-  fn: async function (inputs) {
+    // Save to the db
+    await Dtr.create({url: url, token: token });
 
     // All done.
     return;
