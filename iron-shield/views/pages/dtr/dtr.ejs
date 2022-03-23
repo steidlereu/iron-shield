@@ -3,10 +3,10 @@
     <h1>Docker Registry Overview</h1>
     <hr/>
     <% if (dtrs) { %>
-      
+      <% dtrs.forEach(function(dtr){ %>
         <div class="row mb-3">
           <div class="col-sm-6">
-            <h4><%= dtrs.length %></h4>
+            <h4><%= dtr.url %></h4>
           </div>
           <div class="col-sm-6">
             <span class="float-sm-right">
@@ -16,10 +16,10 @@
         </div>
         <div class="row">
           <div class="col-3">Token:</div>
-          <div class="col"><strong>{{dtrs.length}}</strong></div>
+          <div class="col"><strong><%= dtr.token %></strong></div>
         </div>
         <hr/>
- 
+      <% }); %>
     <% } %>
     <div class="row">
       <a style="width: 150px" class="btn btn-sm btn-outline-info" href="/dtr/add-dtr">Add registry</a>

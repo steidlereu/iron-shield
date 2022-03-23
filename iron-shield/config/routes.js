@@ -65,5 +65,6 @@ module.exports.routes = {
   'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
   'POST  /api/v1/observe-my-session':                 { action: 'observe-my-session', hasSocketFeatures: true },
   'POST  /api/v1/dtr/append-dtr': { action: 'dtr/append-dtr' },
+  'POST  /api/v1/dtr/delete-dtr': { action: 'dtr/delete-dtr' },
 
 };
