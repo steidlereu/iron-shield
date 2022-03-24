@@ -22,8 +22,12 @@ module.exports = {
 
   fn: async function ({id}) {
 
+    console.log(id);
+
     // Save to the db
-    await Dtr.archiveOne({id: id});
+    await Dtr.archiveOne({
+      where:{id: id}
+    });
 
     // All done.
     return;

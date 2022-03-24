@@ -10,7 +10,10 @@
           </div>
           <div class="col-sm-6">
             <span class="float-sm-right">
-              <a style="width: 150px" class="btn btn-sm btn-outline-danger" href="/dtr">Delete</a>
+              <ajax-form action="deleteDtr" :form-data="formData" @submitted="submittedForm()">
+                <input class="form-control" id="id" name="id" type="hidden" value="<%= dtr.url %>">
+                <ajax-button type="submit" class="btn btn-sm btn-outline-danger">Delete</ajax-button>
+              </ajax-form>
             </span>
           </div>
         </div>
