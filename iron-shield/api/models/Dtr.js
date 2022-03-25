@@ -21,6 +21,14 @@ module.exports = {
       example: 'hub.docker.com'
     },
 
+    user: {
+      type: 'string',
+      required: true,
+      description: 'User of docker registry',
+      maxLength: 255,
+      example: 'Maja123'
+    },
+
     token: {
       type: 'string',
       required: true,

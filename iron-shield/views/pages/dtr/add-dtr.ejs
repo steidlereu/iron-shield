@@ -13,7 +13,14 @@
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="token">Access Token</label>
+            <label for="user">User</label>
+            <input class="form-control" id="user" name="user" type="text"  :class="[formErrors.user ? 'is-invalid' : '']" v-model.trim="formData.user" placeholder="some user">
+            <div class="invalid-feedback" v-if="formErrors.user">Please enter your dtr user.</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="token">Access Token or Password</label>
             <input class="form-control" id="token" name="token" type="text"  :class="[formErrors.token ? 'is-invalid' : '']" v-model.trim="formData.token" placeholder="some token">
             <div class="invalid-feedback" v-if="formErrors.token">Please enter your dtr access token.</div>
           </div>

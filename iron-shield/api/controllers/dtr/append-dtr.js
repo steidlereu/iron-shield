@@ -13,6 +13,10 @@ module.exports = {
       type: 'string'
     },
 
+    user: {
+      type: 'string'
+    },
+
     token: {
       type: 'string'
     },
@@ -24,10 +28,10 @@ module.exports = {
   },
   
 
-  fn: async function ({url, token}) {
+  fn: async function ({url, user, token}) {
 
     // Save to the db
-    await Dtr.create({url: url, token: token });
+    await Dtr.create({url: url, user: user, token: token });
 
     // All done.
     return;
