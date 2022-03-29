@@ -1,0 +1,66 @@
+<div id="add-dtr" v-cloak>
+  <div class="container pt-5 pb-5">
+    <h1>Add shield</h1>
+    <hr/>
+    <ajax-form action="appendShield" :syncing.sync="syncing" :cloud-error.sync="cloudError" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" @submitted="submittedForm()">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="url">Dtr</label>
+            <select class="form-select" id="dtr" name="dtr" :class="[formErrors.dtr ? 'is-invalid' : '']" v-model="formData.dtr" focus-first>
+              <option disabled value="">Please select one</option>
+              <% if (dtrs) { %>
+                <% dtrs.forEach(function(dtr){ %>
+                  <option>A</option>
+                <% }); %> 
+              <% } %>
+            </select>
+            <span>Selected: {{ selected }}</span>
+            <div class="invalid-feedback" v-if="formErrors.url">Please select your dtr.</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="url">Image Name</label>
+            <input class="form-control" id="image" name="image" type="text"  :class="[formErrors.image ? 'is-invalid' : '']" v-model.trim="formData.image" placeholder="example-image">
+            <div class="invalid-feedback" v-if="formErrors.image">Please enter your image name.</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="url">All</label>
+            <input class="form-control" id="allTags" name="allTags" type="checkbox" :class="[formErrors.allTags ? 'is-invalid' : '']" v-model.trim="formData.allTags">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="url">Latest</label>
+            <input class="form-control" id="latestTags" name="latestTags" type="checkbox" :class="[formErrors.latestTags ? 'is-invalid' : '']" v-model.trim="formData.latestTags">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="url">Tags</label>
+            <input class="form-control" id="tags" name="tags" type="text"  :class="[formErrors.tags ? 'is-invalid' : '']" v-model.trim="formData.tags" placeholder="1.0.1, 1.0.3, ....">
+            <div class="invalid-feedback" v-if="formErrors.tags">Please enter your image tags.</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="url">Active</label>
+            <input class="form-control" id="active" name="active" type="checkbox" :class="[formErrors.active ? 'is-invalid' : '']" v-model.trim="formData.active">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group text-right">
+            <a class="btn btn-outline-info" href="/shield">Cancel</a>
+            <ajax-button type="submit" :syncing="syncing" class="btn btn-dark">Save</ajax-button>
+          </div>
+        </div>
+      </div>
+    </ajax-form>
+  </div>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
